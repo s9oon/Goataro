@@ -1,11 +1,5 @@
-mod config;
-mod routes;
-mod state;
-
+use backend::{config::Config, routes, state::AppState};
 use clap::Parser;
-
-use config::Config;
-use state::AppState;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
