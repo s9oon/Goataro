@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y curl tar \
     && curl -L https://github.com/official-stockfish/Stockfish/releases/download/sf_19/stockfish-linux-x86-64-universal.tar.gz \
        | tar -xz -C /opt/stockfish
 
-# Add Stockfish to PATH
-ENV PATH="/opt/stockfish:${PATH}"
+RUN mv /opt/stockfish/stockfish/stockfish-linux-x86-64-universal /usr/local/bin/stockfish \
+    && chmod +x /usr/local/bin/stockfish
 
 COPY . .
 RUN cargo build --release
